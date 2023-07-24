@@ -15,12 +15,11 @@ const userFirstPage: React.FC = () => {
     phone: '',
     email: '',
   });
-  
 
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = e.target;
-  //   setUserDetails((prev) => ({ ...prev, [name]: value }));
-  // };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserDetails((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,37 +33,38 @@ const userFirstPage: React.FC = () => {
   };
 
   return (
-    <div>
+    <Container maxWidth="sm">
       <h1>First Page</h1>
       <form onSubmit={handleSubmit}>
         <TextField
           label="Name"
+          name="name"
           value={userDetails.name}
-          onChange={(e) => setUserDetails({ ...userDetails, name: e.target.value })}
-          required
+          onChange={handleChange}
           fullWidth
+          required
         />
         <TextField
-          label="Phone Number"
+          label="Phone number"
+          name="phone"
           value={userDetails.phone}
-          onChange={(e) => setUserDetails({ ...userDetails, phone: e.target.value })}
-          required
+          onChange={handleChange}
           fullWidth
+          required
         />
         <TextField
           label="Email"
+          name="email"
           value={userDetails.email}
-          onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })}
-          required
+          onChange={handleChange}
           fullWidth
+          required
         />
-        {userDetails.name && userDetails.phone && userDetails.email && (
-          <Button href='/secondPage' type="submit" variant="contained" color="secondary">
-            Next
-          </Button>
-        )}
+        <Button href='/secondPage' type="submit" variant="contained" color="secondary">
+          Next
+        </Button>
       </form>
-    </div>
+    </Container>
   );
 };
 

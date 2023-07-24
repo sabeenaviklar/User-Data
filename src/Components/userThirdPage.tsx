@@ -20,16 +20,16 @@ const ThirdPage: React.FC = () => {
     },
   ];
 
-  const [expandedDeptId, setExpandedDeptId] = useState<number | false>(false);
+  // const [expandedDeptId, setExpandedDeptId] = useState<number | false>(false);
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [selectedSubDepartments, setSelectedSubDepartments] = useState<string[]>([]);
 
-  const handleAccordionChange = (deptId: number) => (
-    event: React.SyntheticEvent,
-    isExpanded: boolean
-  ) => {
-    setExpandedDeptId(isExpanded ? deptId : false);
-  };
+  // const handleAccordionChange = (deptId: number) => (
+  //   event: React.SyntheticEvent,
+  //   isExpanded: boolean
+  // ) => {
+  //   setExpandedDeptId(isExpanded ? deptId : false);
+  // };
 
   const handleDepartmentSelection = (department: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = event.target.checked;

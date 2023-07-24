@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container } from '@mui/material';
+import { TextField, Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
 interface UserDetails {
@@ -33,38 +33,37 @@ const userFirstPage: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <div>
       <h1>First Page</h1>
       <form onSubmit={handleSubmit}>
         <TextField
           label="Name"
-          name="name"
           value={userDetails.name}
-          onChange={handleChange}
-          fullWidth
+          onChange={(e) => setUserDetails({ ...userDetails, name: e.target.value })}
           required
+          fullWidth
         />
         <TextField
-          label="Phone number"
-          name="phone"
+          label="Phone Number"
           value={userDetails.phone}
-          onChange={handleChange}
-          fullWidth
+          onChange={(e) => setUserDetails({ ...userDetails, phone: e.target.value })}
           required
+          fullWidth
         />
         <TextField
           label="Email"
-          name="email"
           value={userDetails.email}
-          onChange={handleChange}
-          fullWidth
+          onChange={(e) => setUserDetails({ ...userDetails, email: e.target.value })}
           required
+          fullWidth
         />
-        <Button href='/secondPage' type="submit" variant="contained" color="secondary">
-          Next
-        </Button>
+        {userDetails.name && userDetails.phone && userDetails.email && (
+          <Button type="submit" variant="contained" color="secondary">
+            Next
+          </Button>
+        )}
       </form>
-    </Container>
+    </div>
   );
 };
 
